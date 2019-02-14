@@ -3,28 +3,22 @@ import Contact from "./Contact";
 import { Consumer } from '../context';
 
 class Contacts extends Component {
-  deleteContact = (id) => {
-    const { contacts } = this.state;
-
-    const newContacts = contacts.filter(contact => contact.id !== id);
-
-    this.setState({
-      contacts: newContacts
-    });
-  }
-
   render() {
+    // Consumer tag contains value with the state from Context.Provider
+    // The expression in Consumer gives a value from Context.Provider
+    // Context.Provider has the entire state.
+    // From value, return the JSX that maps through the contacts array.
     return (
       <Consumer>
         {value => {
           const { contacts } = value;
           return (
+            // React.Fragment replaces an unnecessary div with no classes or styling
             <React.Fragment>
               {contacts.map(contact => (
                 <Contact
                   key={contact.id}
                   contact={contact} //pass in contact prop
-                  deleteClickHandler={this.deleteContact.bind(this, contact.id)} //pass in deleteClickHandler prop
                 />
               ))}
             </React.Fragment>
