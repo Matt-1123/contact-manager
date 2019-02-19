@@ -10,13 +10,18 @@ const reducer = (state, action) => {
         ...state,
         contacts: state.contacts.filter(contact => contact.id !== action.payload)
       };
+    case 'ADD_CONTACT':
+      return {
+        ...state,
+        contacts: [action.payload, ...state.contacts] //add on new contact
+      };
     default:
       return state;
   }
 }
 
 export class Provider extends Component {
-  //global state
+  //global state, aka application level state
   state = {
     contacts: [
       {
