@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 // Creates a Context object:
 const Context = React.createContext();
@@ -23,28 +24,14 @@ const reducer = (state, action) => {
 export class Provider extends Component {
   //global state, aka application level state
   state = {
-    contacts: [
-      {
-        id: 1,
-        name: "John Doe",
-        email: "jdoe@gmail.com",
-        phone: "555-555-5555"
-      },
-      {
-        id: 2,
-        name: "Karen Williams",
-        email: "karen@gmail.com",
-        phone: "222-222-2222"
-      },
-      {
-        id: 3,
-        name: "Henry Johnson",
-        email: "henry@gmail.com",
-        phone: "111-111-1111"
-      }
-    ],
+    contacts: [],
     // With dispatch, we can now call an action from anywhere.
     dispatch: action => this.setState(state => reducer(state, action))
+  }
+
+  componentDidMount() {
+    axios.get('http://jsonplaceholder.typicode.com/users')
+      .then(response => this.setState({ contacts: response.data }))
   }
 
   render() {
