@@ -13,7 +13,7 @@ const TextInputGroup = ({
 }) => {
   return (
     <div className="form-group">
-      <label htmlFor="{name}">{label}</label>
+      <label htmlFor={name}>{label}</label>
       <input
         type={type}
         name={name}
@@ -37,11 +37,11 @@ TextInputGroup.propTypes = {
   type: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
-  error: PropTypes.string.isRequired
-}
+  error: PropTypes.string
+};
 
 TextInputGroup.defaultProps = {
   type: 'text'
-}
+};
 
 export default TextInputGroup;

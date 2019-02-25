@@ -108,9 +108,6 @@ class EditContact extends Component {
                     onChange={this.onChange}
                     error={errors.phone}
                   />
-
-
-
                   <input
                     type="submit"
                     value="Update Contact"
@@ -119,10 +116,10 @@ class EditContact extends Component {
                 </form>
               </div>
             </div>
-          )
+          );
         }}
       </Consumer>
-    )
+    );
   }
 }
 
